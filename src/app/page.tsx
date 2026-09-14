@@ -135,9 +135,9 @@ function Navbar() {
 // ============================================================
 // Service Card with Image
 // ============================================================
-function ServiceCard({ image, title, items, delay }: { image: string; title: string; items: string[]; delay: number }) {
+function ServiceCard({ image, title, items, delay, slug }: { image: string; title: string; items: string[]; delay: number; slug: string }) {
   return (
-    <div className="reveal group relative rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden hover:bg-white/[0.05] hover:border-atlas-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-atlas-500/5" style={{ transitionDelay: `${delay}ms` }}>
+    <a href={`/services/${slug}`} className="reveal group relative rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden hover:bg-white/[0.05] hover:border-atlas-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-atlas-500/5 block cursor-pointer" style={{ transitionDelay: `${delay}ms` }}>
       <div className="relative h-48 overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-atlas-950 via-atlas-950/40 to-transparent" />
@@ -154,8 +154,12 @@ function ServiceCard({ image, title, items, delay }: { image: string; title: str
             </li>
           ))}
         </ul>
+        <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-atlas-400 group-hover:gap-2 transition-all">
+          Learn More
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -365,36 +369,42 @@ export default function Home() {
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ServiceCard
               delay={0}
+              slug="geotechnical"
               image="/images/service-geotechnical.jpeg"
               title="Geotechnical"
               items={['Soil Investigation & Sampling', 'Cone Penetration Testing (CPT)', 'Pressuremeter & Plate Load Tests', 'Pile Load Testing', 'Water Pumping & Percolation Tests', 'Drilling up to 200m depth']}
             />
             <ServiceCard
               delay={100}
+              slug="geophysical"
               image="/images/service-seismic-field.jpeg"
               title="Geophysical"
               items={['Seismic Refraction & Reflection', 'Electrical Resistivity Tomography', 'Ground Penetrating Radar', 'Marine Geophysical Surveys', 'Borehole Logging', 'Vibration Monitoring']}
             />
             <ServiceCard
               delay={200}
+              slug="surveys"
               image="/images/service-bathymetric.jpeg"
               title="Surveys"
               items={['Aerial Topographic Surveys', 'Bathymetric Surveys (Single/Multi-beam)', 'Utility Location Surveys', 'GPS & GIS Mapping', 'Marine Hydrographic Surveys', '3D Geological Modelling']}
             />
             <ServiceCard
               delay={300}
+              slug="environmental"
               image="/images/service-marine-mapping.jpeg"
               title="Environmental"
               items={['Environmental Impact Assessment', 'Air & Water Quality Monitoring', 'Groundwater Remediation', 'Waste Management', 'Contamination Assessment', 'Noise & Emission Modelling']}
             />
             <ServiceCard
               delay={400}
+              slug="geological-mapping"
               image="/images/service-geological-terrain.jpeg"
               title="Geological Mapping"
               items={['3D Geological Modelling', 'Mineral Exploration', 'Resources Estimation', 'Drill Hole Analysis', 'Lab Analysis & Testing', 'Quarry & Dam Surveys']}
             />
             <ServiceCard
               delay={500}
+              slug="health-safety"
               image="/images/about-cpt-rig.jpeg"
               title="Health & Safety"
               items={['Safe Work Environment', 'Employee Training & Supervision', 'Equipment Maintenance', 'Substance Handling Protocols', 'Accident Prevention', 'Regular Policy Review']}
